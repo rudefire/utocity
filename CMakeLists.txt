@@ -7,6 +7,7 @@ set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_dIR}/lib")
 set(
   SOURCE 
   src/main.cpp 
+  src/LineGraph.cpp
   libs/gl3w/GL/gl3w.c
   imgui/imgui.cpp
   imgui/imgui_demo.cpp
@@ -19,6 +20,7 @@ add_executable(${EXECUTABLE_NAME} ${SOURCE})
 target_compile_features(${EXECUTABLE_NAME} PRIVATE cxx_range_for)
 
 include_directories(libs/gl3w)
+include_directories(inc/)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIR})

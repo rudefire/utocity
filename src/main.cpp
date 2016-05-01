@@ -1,16 +1,15 @@
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw_gl3.h"
-#include <GL/gl3w.h>
-#include <GLFW/glfw3.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "util.hpp"
+#include <string>
+#include "LineGraph.hpp"
 
 static void error_callback(int error, const char* description)
 {
   fputs(description, stderr);
 }
 
-void ImGuiFunc();
+LineGraph test_graph;
+void Initialize();
+void Render();
 
 int main(int argc, char** argv)
 { 
@@ -36,12 +35,14 @@ int main(int argc, char** argv)
 
   ImVec4 clear_color = ImColor(114, 144, 154);
 
+  Initialize();
+
   while(!glfwWindowShouldClose(window))
   {
     glfwPollEvents();
     ImGui_ImplGlfwGL3_NewFrame();
 
-    ImGuiFunc();
+    Render();
   
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -58,11 +59,20 @@ int main(int argc, char** argv)
   return 0;
 }
 
-void ImGuiFunc()
+void Initialize()
 {
-  float progress = .5f;
-  ImGui::SetNextWindowSize({(float)(640/2), (float)(480/2)});
-  ImGui::Begin("Test Area", NULL);
-  ImGui::ProgressBar(progress);
-  ImGui::End();
+  std::string graph_label = "Test Graph";
+  std::string x_label = "X Axis";
+  std::string y_label = "Y Axis";
+  float x_scale = 1.0f;
+  float y_scale = 1.0f;
+  std::vector<double> x_values;
+  std::vector<double> y_values;
+
+  test_graph.Build(graph_label, x_label, y_label, x_scale, y_scale, x_values, y_values);
+}
+
+void Render()
+{
+  test_graph.Render();
 }

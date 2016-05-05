@@ -10,8 +10,10 @@ class LineGraph
     ~LineGraph();
 
     void Build(std::string graph_l, std::string x_l, std::string y_l,
-        float x_s, float y_s, std::vector<double> x_vals, std::vector<double> y_vals);
+        float y_s, std::vector<float> y_vals, int x_divs);
+    void Rebuild();
     void Render();
+    void CalculateOrigin();
     void TextRender();
     void PointRender();
     void GraphRender();
@@ -20,10 +22,10 @@ class LineGraph
 
   private:
     std::string graph_label, x_label, y_label;    
-    float x_scale, y_scale;
-    std::vector<double> x_values;
-    std::vector<double> y_values;
-    float window_width = 320, window_height = 240;
+    float y_scale;
+    std::vector<float> y_values;
+    int x_divisions = 0;
+    float window_width = 500, window_height = 500;
     float graph_height, graph_width;
     float x_granularity = 10.f, y_granularity = 10.f;
 };

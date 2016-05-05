@@ -21,7 +21,7 @@ int main(int argc, char** argv)
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  GLFWwindow* window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
+  GLFWwindow* window = glfwCreateWindow(1280, 720, "Simple example", NULL, NULL);
   if(!window)
   {
     glfwTerminate();
@@ -64,15 +64,19 @@ void Initialize()
   std::string graph_label = "Test Graph";
   std::string x_label = "X Axis";
   std::string y_label = "Y Axis";
-  float x_scale = 1.0f;
   float y_scale = 1.0f;
-  std::vector<double> x_values;
-  std::vector<double> y_values;
+  std::vector<float> y_values = {1, 3, 5, 3, 5, 4, 7, 8, 3, 9, 2};
+  int x_divisions = 10;
 
-  test_graph.Build(graph_label, x_label, y_label, x_scale, y_scale, x_values, y_values);
+  test_graph.Build(graph_label, x_label, y_label,
+      y_scale, y_values, x_divisions);
 }
 
 void Render()
 {
+  ImGui::BeginMainMenuBar();
+  ImGui::MenuItem("Menu");
+  ImGui::EndMainMenuBar();
   test_graph.Render();
+  /* ImGui::ShowTestWindow(); */
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+class GLFWwindow;
+
 class Core
 {
   public:
@@ -11,5 +13,7 @@ class Core
     bool Shutdown();
 
   private:
+    GLFWwindow* window = nullptr;
 
+    void Render();
 };

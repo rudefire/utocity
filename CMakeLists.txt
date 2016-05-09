@@ -7,6 +7,7 @@ set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_dIR}/lib")
 set(
   SOURCE 
   src/main.cpp 
+  src/Core.cpp
   src/LineGraph.cpp
   libs/gl3w/GL/gl3w.c
   imgui/imgui.cpp

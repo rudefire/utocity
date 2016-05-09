@@ -66,7 +66,7 @@ void Core::Render()
 {
   ImGui_ImplGlfwGL3_NewFrame();
 
-  ImVec4 clear_color = ImColor(white);
+  ImVec4 clear_color = ImColor(light_grey);
   int display_w, display_h;
   glfwGetFramebufferSize(window, &display_w, &display_h);
   glViewport(0, 0, display_w, display_h);

@@ -1,6 +1,7 @@
 #include "LineGraph.hpp"
 #include "util.hpp"
-#include "sstream"
+#include "Colors.hpp"
+#include <sstream>
 
 ImVec2 origin;
 
@@ -68,8 +69,6 @@ void LineGraph::PointRender()
 {
   ImDrawList* draw_list = ImGui::GetWindowDrawList();
   float x_div = graph_width / x_granularity;
-  ImVec4 red{.8f, 0.f, 0.f, 1.f};
-  ImU32 red32 = ImColor(red);
   float y_div = graph_height / y_granularity;
   int x_offset = 0;
   ImVec2 previous_point;
@@ -77,9 +76,9 @@ void LineGraph::PointRender()
   {
     ImVec2 offset({x_div * x_offset, y_div * y_values[iter]});
     ImVec2 point({origin.x + offset.x, origin.y - offset.y});
-    draw_list->AddCircleFilled(point, 5.f, red32);
+    draw_list->AddCircleFilled(point, 5.f, red);
     if(0 != iter)
-      draw_list->AddLine(point, previous_point, red32);
+      draw_list->AddLine(point, previous_point, red);
     x_offset++;
     previous_point = point;
   }
@@ -87,12 +86,10 @@ void LineGraph::PointRender()
 
 void LineGraph::GraphRender()
 {
-  ImVec4 col{1.0f, 1.0f, 1.0f, 1.0f};
-  ImU32 col32 = ImColor(col);
   ImDrawList* draw_list = ImGui::GetWindowDrawList();
-  draw_list->AddLine({origin.x,origin.y}, {origin.x,origin.y-graph_height}, col32);
+  draw_list->AddLine({origin.x,origin.y}, {origin.x,origin.y-graph_height}, white);
   draw_list->AddLine({origin.x,origin.y}, 
-      {origin.x+graph_width,origin.y}, col32);
+      {origin.x+graph_width,origin.y}, white);
 }
 
 void LineGraph::ScaleRender()
@@ -101,24 +98,20 @@ void LineGraph::ScaleRender()
   float y_div = graph_height / y_granularity;
   float x_dif_height = 10.f;
   float y_dif_width = 10.f;
-  ImVec4 white{1.f, 1.f, 1.f, 1.f};
-  ImU32 white32 = ImColor(white);
-  ImVec4 grey{.5f, .5f, .5f, 1.f};
-  ImU32 grey32{ImColor(grey)};
   ImDrawList* draw_list = ImGui::GetWindowDrawList();
   float height = origin.y;
   int x_offset = 0;
   for(size_t iter = 0; iter <= y_granularity; iter++)
   {
     draw_list->AddLine({origin.x - y_dif_width, height}, 
-        {origin.x, height}, white32);
+        {origin.x, height}, white);
     char buffer[10];
     sprintf(buffer, "%.0f", y_scale * iter);
     ImVec2 text_size = ImGui::CalcTextSize(buffer);
     ImGui::SetCursorScreenPos({origin.x - text_size.x - 15.f, height});
     ImGui::Text(buffer);
     draw_list->AddLine({origin.x, height}, 
-        {origin.x + graph_width, height}, grey32);
+        {origin.x + graph_width, height}, light_grey);
     height -= y_div;
   }
 
@@ -127,7 +120,7 @@ void LineGraph::ScaleRender()
   for(size_t iter = 0; iter <= x_granularity; iter++)
   {
     draw_list->AddLine({width, origin.y},
-        {width, origin.y + x_dif_height}, white32);
+        {width, origin.y + x_dif_height}, white);
     char buffer[10];
     sprintf(buffer, "%d", time_scale);
     ImVec2 text_size = ImGui::CalcTextSize(buffer);

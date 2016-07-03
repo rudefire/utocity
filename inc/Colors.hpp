@@ -1,18 +1,18 @@
 #pragma once
 
-#define white         0xFFFFFF
-#define black         0x000000
-#define light_grey    0xA0A0A0
-#define dark_grey     0x616161
-#define red           0x2323AD
-#define green         0x14691D
-#define blue          0xD74B2A
-#define brown         0x194A81
-#define purple        0xC02681
-#define light_green   0x7AC581
-#define light_blue    0xFFAF9D
-#define cyan          0xD0D029
-#define orange        0x3392FF
-#define yellow        0x33EEFF
-#define tan           0xBBDEE9
-#define pink          0xF3CDFF
+#define white         0xFFFFFFFF
+#define black         0xFF000000
+#define light_grey    0xFFA0A0A0
+#define dark_grey     0xFF616161
+#define red           0xFF2323AD
+#define green         0xFF14691D
+#define blue          0xFFD74B2A
+#define brown         0xFF194A81
+#define purple        0xFFC02681
+#define light_green   0xFF7AC581
+#define light_blue    0xFFFFAF9D
+#define cyan          0xFFD0D029
+#define orange        0xFF3392FF
+#define yellow        0xFF33EEFF
+#define tan           0xFFBBDEE9
+#define pink          0xFFF3CDFF

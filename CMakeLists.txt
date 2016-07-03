@@ -22,6 +22,7 @@ target_compile_features(${EXECUTABLE_NAME} PRIVATE cxx_range_for)
 
 include_directories(libs/gl3w)
 include_directories(inc/)
+include_directories(imgui/)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIR})

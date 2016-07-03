@@ -1,6 +1,11 @@
 #include "Core.hpp"
 #include "util.hpp"
 #include "Colors.hpp"
+#include <vector>
+#include "LineGraph.hpp"
+
+//temp
+LineGraph temp_graph;
 
 static void error_callback(int error, const char* description)
 {
@@ -39,6 +44,10 @@ bool Core::Initialize()
 
   ImGui_ImplGlfwGL3_Init(window, true);
 
+  std::vector<float> temp{1,2,3,4,5};
+  
+  temp_graph.Build("graph", "X", "Y", 10, temp, 20);
+
   return true;
 }
 
@@ -72,6 +81,32 @@ void Core::Render()
   glViewport(0, 0, display_w, display_h);
   glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
   glClear(GL_COLOR_BUFFER_BIT);
+
+  RunMenuBar();
+  //temp
+  temp_graph.Render();
+
   ImGui::Render();
   glfwSwapBuffers(window);
+}
+
+void Core::InitMenuBar()
+{
+  
+}
+
+void Core::RunMenuBar()
+{
+  ImGui::BeginMainMenuBar();
+  if (ImGui::BeginMenu("File"))
+  {
+    if(ImGui::MenuItem("New")){}
+    if(ImGui::BeginMenu("Open"))
+    {
+      ImGui::MenuItem("Latest file");
+      ImGui::EndMenu();
+    }
+    ImGui::EndMenu();
+  }
+  ImGui::EndMainMenuBar();
 }

@@ -16,4 +16,6 @@ class Core
     GLFWwindow* window = nullptr;
 
     void Render();
+    void InitMenuBar();
+    void RunMenuBar();
 };

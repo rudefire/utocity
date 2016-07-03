@@ -8,6 +8,7 @@ set(
   SOURCE 
   src/main.cpp 
   src/LineGraph.cpp
+  src/MenuBar.cpp
   libs/gl3w/GL/gl3w.c
   imgui/imgui.cpp
   imgui/imgui_demo.cpp
@@ -21,6 +22,7 @@ target_compile_features(${EXECUTABLE_NAME} PRIVATE cxx_range_for)
 
 include_directories(libs/gl3w)
 include_directories(inc/)
+include_directories(imgui/)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIR})

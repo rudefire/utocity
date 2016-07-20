@@ -97,7 +97,8 @@ flags = [
 '/usr/include/GL',
 '-isystem',
 '/usr/include/GLFW',
-'-I', 'inc'
+'-I', 'inc',
+'-I', 'imgui'
 ]
 
 

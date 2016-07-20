@@ -1,3 +1,17 @@
 /build
 *.pyc
 *.swo
+*.4ct
+*.4tc
+*.aux
+*.bbl
+*.blg
+*.css
+*.dvi
+*.idv
+*.lg
+*.log
+*.rtf
+*.tex
+*.tmp
+*.xref
